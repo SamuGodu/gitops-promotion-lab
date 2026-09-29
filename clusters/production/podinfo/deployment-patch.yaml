@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: podinfo
+
+spec:
+  replicas: 2
+
+  template:
+    spec:
+      containers:
+        - name: podinfo
+          env:
+            - name: PODINFO_UI_MESSAGE
+              value: "Production environment"
+            - name: PODINFO_UI_COLOR
+              value: "#1565c0"
