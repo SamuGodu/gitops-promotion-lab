@@ -26,9 +26,6 @@ spec:
           image: ghcr.io/stefanprodan/podinfo:6.14.1
           imagePullPolicy: IfNotPresent
 
-          args:
-            - --port=9898
-
           env:
             - name: PODINFO_UI_MESSAGE
               value: "GitOps promotion lab"
