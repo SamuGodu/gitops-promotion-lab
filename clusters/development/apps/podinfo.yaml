@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: podinfo
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: development-apps
+    environment: development
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://gitlab.com/SamuGodu/gitops-promotion-lab.git
+    targetRevision: develop
+    path: clusters/development/podinfo
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: podinfo
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
