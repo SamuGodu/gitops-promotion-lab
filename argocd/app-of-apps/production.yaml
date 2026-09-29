@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: production-apps
+  namespace: argocd
+  labels:
+    environment: production
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://gitlab.com/SamuGodu/gitops-promotion-lab.git
+    targetRevision: main
+    path: clusters/production/apps
+    directory:
+      recurse: false
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
