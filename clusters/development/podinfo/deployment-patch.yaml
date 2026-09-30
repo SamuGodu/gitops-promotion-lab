@@ -7,12 +7,3 @@ metadata:
 spec:
   replicas: 1
 
-  template:
-    spec:
-      containers:
-        - name: podinfo
-          env:
-            - name: PODINFO_UI_MESSAGE
-              value: "Development environment"
-            - name: PODINFO_UI_COLOR
-              value: "#2e7d32"
