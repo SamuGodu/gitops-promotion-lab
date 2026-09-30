@@ -28,9 +28,16 @@ spec:
 
           env:
             - name: PODINFO_UI_MESSAGE
-              value: "GitOps promotion lab"
+              valueFrom:
+                configMapKeyRef:
+                  name: podinfo-config
+                  key: PODINFO_UI_MESSAGE
+
             - name: PODINFO_UI_COLOR
-              value: "#34577c"
+              valueFrom:
+                configMapKeyRef:
+                  name: podinfo-config
+                  key: PODINFO_UI_COLOR
 
           ports:
             - name: http
