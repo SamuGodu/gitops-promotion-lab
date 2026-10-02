@@ -13,3 +13,10 @@ labels:
 
 patches:
   - path: deployment-patch.yaml
+
+configMapGenerator:
+  - name: podinfo-config
+    behavior: replace
+    literals:
+      - "PODINFO_UI_MESSAGE=Development environment"
+      - "PODINFO_UI_COLOR=#2e7d32"
