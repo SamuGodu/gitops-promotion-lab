@@ -1,0 +1,26 @@
+
+replicaCount: 1
+
+environment: default
+
+image:
+  repository: ghcr.io/stefanprodan/podinfo
+  tag: "6.14.1"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 9898
+
+config:
+  message: "GitOps Helm lab"
+  color: "#34577c"
+
+resources:
+  requests:
+    cpu: 25m
+    memory: 32Mi
+  limits:
+    cpu: 100m
+    memory: 64Mi
+
