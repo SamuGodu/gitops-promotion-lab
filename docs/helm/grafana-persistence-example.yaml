@@ -1,0 +1,12 @@
+# Learning example only.
+# Validate the target StorageClass before deploying.
+
+grafana:
+  enabled: true
+
+  persistence:
+    enabled: true
+    type: pvc
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
