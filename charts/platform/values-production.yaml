@@ -6,3 +6,6 @@ podinfo:
   config:
     message: "Production configured by parent chart"
     color: "#1565c0"
+
+storageDemo:
+  enabled: false
