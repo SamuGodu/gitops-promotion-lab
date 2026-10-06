@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: podinfo-helm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: development-apps
+    environment: development
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://gitlab.com/SamuGodu/gitops-promotion-lab.git
+    targetRevision: develop
+    path: charts/platform
+
+    helm:
+      releaseName: platform-dev
+      valueFiles:
+        - values-development.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: podinfo-helm
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

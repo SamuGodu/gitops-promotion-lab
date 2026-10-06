@@ -1,0 +1,8 @@
+podinfo:
+  enabled: true
+  replicaCount: 1
+  environment: development
+
+  config:
+    message: "Development configured by parent chart"
+    color: "#2e7d32"

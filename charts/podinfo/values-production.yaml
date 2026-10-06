@@ -1,0 +1,7 @@
+replicaCount: 2
+
+environment: production
+
+config:
+  message: "Production Helm environment"
+  color: "#1565c0"

@@ -1,0 +1,6 @@
+dependencies:
+- name: podinfo-helm
+  repository: file://../podinfo
+  version: 0.1.0
+digest: sha256:1a6f51cb5017c02fdf9ad7f267dd359478bf7aaebe1478bf2f874416b6a05c5f
+generated: "2026-10-05T19:33:18.844951-06:00"
