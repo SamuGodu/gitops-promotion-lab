@@ -1,0 +1,7 @@
+replicaCount: 1
+
+environment: development
+
+config:
+  message: "Development Helm environment"
+  color: "#2e7d32"
