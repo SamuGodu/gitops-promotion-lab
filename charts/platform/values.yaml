@@ -1,2 +1,5 @@
 podinfo:
   enabled: true
+
+storageDemo:
+  enabled: false

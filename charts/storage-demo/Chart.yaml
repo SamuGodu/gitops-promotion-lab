@@ -1,0 +1,6 @@
+apiVersion: v2
+name: storage-demo
+description: PVC expansion learning scenario
+type: application
+version: 0.1.0
+appVersion: "1.36.1"

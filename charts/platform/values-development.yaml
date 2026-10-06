@@ -6,3 +6,13 @@ podinfo:
   config:
     message: "Development configured by parent chart"
     color: "#2e7d32"
+
+storageDemo:
+  enabled: true
+  replicaCount: 1
+
+  persistence:
+    storageClassName: standard
+    accessMode: ReadWriteOnce
+    size: 128Mi
+    mountPath: /data
