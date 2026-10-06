@@ -14,5 +14,5 @@ storageDemo:
   persistence:
     storageClassName: standard
     accessMode: ReadWriteOnce
-    size: 256Mi
+    size: 128Mi
     mountPath: /data
