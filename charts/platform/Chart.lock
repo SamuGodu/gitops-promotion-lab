@@ -5,5 +5,8 @@ dependencies:
 - name: storage-demo
   repository: file://../storage-demo
   version: 0.1.0
-digest: sha256:f37d722c8d38782cd95c24a3b3804c97e86173e1e0d8b27b3b334071dedf0b05
-generated: "2026-10-06T14:15:27.261678-06:00"
+- name: resource-demo
+  repository: file://../resource-demo
+  version: 0.1.0
+digest: sha256:9ce3185d49aed4f4af6839ed19d0f3c3cf0964363704a869e811cdc2866f011b
+generated: "2026-10-07T10:51:07.252685-06:00"

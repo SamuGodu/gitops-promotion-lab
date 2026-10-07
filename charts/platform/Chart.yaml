@@ -2,7 +2,7 @@ apiVersion: v2
 name: gitops-platform
 description: Parent chart for the GitOps promotion lab
 type: application
-version: 0.2.0
+version: 0.3.0
 appVersion: "1.0.0"
 
 dependencies:
@@ -17,3 +17,9 @@ dependencies:
     version: 0.1.0
     repository: "file://../storage-demo"
     condition: storageDemo.enabled
+
+  - name: resource-demo
+    alias: resourceDemo
+    version: 0.1.0
+    repository: "file://../resource-demo"
+    condition: resourceDemo.enabled

@@ -3,3 +3,6 @@ podinfo:
 
 storageDemo:
   enabled: false
+
+resourceDemo:
+  enabled: false
