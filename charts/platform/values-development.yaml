@@ -27,8 +27,8 @@ resourceDemo:
 
   resources:
     requests:
-      cpu: 50m
+      cpu: "11"
       memory: 32Mi
     limits:
-      cpu: 200m
+      cpu: "11"
       memory: 64Mi
