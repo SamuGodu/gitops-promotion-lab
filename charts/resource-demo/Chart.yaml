@@ -1,0 +1,6 @@
+apiVersion: v2
+name: resource-demo
+description: CPU and memory resource-management learning scenarios
+type: application
+version: 0.1.0
+appVersion: "3.13"

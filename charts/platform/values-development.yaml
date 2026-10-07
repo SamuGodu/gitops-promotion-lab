@@ -16,3 +16,19 @@ storageDemo:
     accessMode: ReadWriteOnce
     size: 128Mi
     mountPath: /data
+
+resourceDemo:
+  enabled: true
+  replicaCount: 1
+  scenario: idle
+
+  workload:
+    memoryMi: 96
+
+  resources:
+    requests:
+      cpu: 50m
+      memory: 32Mi
+    limits:
+      cpu: 200m
+      memory: 64Mi
