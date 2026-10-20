@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: notebook-stg
+  namespace: argocd
+  labels:
+    environment: stg
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: notebook-stg
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/demo-web
+      targetRevision: 1.0.0
+      helm:
+        releaseName: notebook
+        valueFiles:
+          - $value/base/notebook/values.yaml
+          - $value/clusters/STG/lab/local/notebook/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/STG/lab/local/notebook
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

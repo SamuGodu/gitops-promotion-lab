@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: scheduler-stg
+  namespace: argocd
+  labels:
+    environment: stg
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: scheduler-stg
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/demo-worker
+      targetRevision: 1.0.0
+      helm:
+        releaseName: scheduler
+        valueFiles:
+          - $value/base/scheduler/values.yaml
+          - $value/clusters/STG/lab/local/scheduler/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/STG/lab/local/scheduler
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

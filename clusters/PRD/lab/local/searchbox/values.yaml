@@ -1,0 +1,10 @@
+# Only PRD differences belong here.
+image:
+  tag: "2.0.0"
+replicaCount: 1
+database:
+  url: postgres://database-prd.example.invalid:5432/searchbox
+resources:
+  requests:
+    cpu: 25m
+    memory: 96Mi

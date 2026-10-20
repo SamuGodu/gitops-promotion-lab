@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: notebook-dta
+  namespace: argocd
+  labels:
+    environment: dta
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: notebook-dta
+  sources:
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: local-sources/HelmCharts/demo-web
+      helm:
+        releaseName: notebook
+        valueFiles:
+          - $value/base/notebook/values.yaml
+          - $value/clusters/DTA/lab/local/notebook/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/DTA/lab/local/notebook
+      ref: value
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

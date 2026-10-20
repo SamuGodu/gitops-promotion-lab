@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: app-route
+spec:
+  hostnames: [workboard-prd.example.invalid]
+  parentRefs:
+    - name: lab-gateway
+      namespace: lab-gateway
+      sectionName: https
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: workboard
+          port: 8080

@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: releasehub-prd
+  namespace: argocd
+  labels:
+    environment: prd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: releasehub-prd
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/service-stack
+      targetRevision: 2.0.0
+      helm:
+        releaseName: releasehub
+        valueFiles:
+          - $value/base/releasehub/values.yaml
+          - $value/clusters/PRD/lab/local/releasehub/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: main
+      path: clusters/PRD/lab/local/releasehub
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

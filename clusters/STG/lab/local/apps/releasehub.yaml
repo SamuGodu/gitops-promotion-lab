@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: releasehub-stg
+  namespace: argocd
+  labels:
+    environment: stg
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: releasehub-stg
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/service-stack
+      targetRevision: 2.0.0
+      helm:
+        releaseName: releasehub
+        valueFiles:
+          - $value/base/releasehub/values.yaml
+          - $value/clusters/STG/lab/local/releasehub/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/STG/lab/local/releasehub
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: scheduler-prd
+  namespace: argocd
+  labels:
+    environment: prd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: scheduler-prd
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/demo-worker
+      targetRevision: 1.0.0
+      helm:
+        releaseName: scheduler
+        valueFiles:
+          - $value/base/scheduler/values.yaml
+          - $value/clusters/PRD/lab/local/scheduler/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: main
+      path: clusters/PRD/lab/local/scheduler
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

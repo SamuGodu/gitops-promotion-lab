@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: identity-stg
+resources:
+  - ../../../../../base/identity
+  - pv.yaml
+  - pvc.yaml
+  - route.yaml
+patches:
+  - target:
+      kind: ExternalSecret
+      name: app-db-es
+    patch: |-
+      - op: replace
+        path: /spec/data/0/remoteRef/key
+        value: identity-stg-password

@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: workboard-dta
+  namespace: argocd
+  labels:
+    environment: dta
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: workboard-dta
+  sources:
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: local-sources/HelmCharts/demo-web
+      helm:
+        releaseName: workboard
+        valueFiles:
+          - $value/base/workboard/values.yaml
+          - $value/clusters/DTA/lab/local/workboard/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/DTA/lab/local/workboard
+      ref: value
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

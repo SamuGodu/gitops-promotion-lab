@@ -1,0 +1,8 @@
+# Only STG differences belong here.
+replicaCount: 1
+database:
+  url: postgres://database-stg.example.invalid:5432/notebook
+resources:
+  requests:
+    cpu: 25m
+    memory: 64Mi

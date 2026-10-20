@@ -1,0 +1,6 @@
+dependencies:
+- name: demo-cache
+  repository: file://../demo-cache
+  version: 1.0.0
+digest: sha256:15e78909c45728e346f88cb39b0a7a2160d5480d4ef0c47edc22bdd337083286
+generated: "2026-10-16T18:30:20.856562-06:00"

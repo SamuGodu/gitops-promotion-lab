@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: identity-prd
+  namespace: argocd
+  labels:
+    environment: prd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: identity-prd
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/service-stack
+      targetRevision: 2.0.0
+      helm:
+        releaseName: identity
+        valueFiles:
+          - $value/base/identity/values.yaml
+          - $value/clusters/PRD/lab/local/identity/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: main
+      path: clusters/PRD/lab/local/identity
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: workboard-stg-pv
+  labels:
+    app: workboard
+    environment: stg
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 1Gi
+  accessModes: [ReadWriteMany]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: storage-stg.example.invalid
+    path: /practice/workboard

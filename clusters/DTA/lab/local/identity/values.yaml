@@ -1,0 +1,14 @@
+# Only DTA differences belong here.
+replicaCount: 1
+database:
+  url: postgres://database-dta.example.invalid:5432/identity
+resources:
+  requests:
+    cpu: 25m
+    memory: 32Mi
+schema:
+  currentVersion: 1
+  requiredVersion: 2
+migration:
+  enabled: true
+  targetVersion: 2

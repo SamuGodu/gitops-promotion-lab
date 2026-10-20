@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: notebook-prd-pv
+  labels:
+    app: notebook
+    environment: prd
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 1Gi
+  accessModes: [ReadWriteMany]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: storage-prd.example.invalid
+    path: /practice/notebook

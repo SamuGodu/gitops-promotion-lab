@@ -1,0 +1,9 @@
+image:
+  repository: registry.example.invalid/identity
+  tag: "2.1.0-lab"
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+schema:
+  enabled: true

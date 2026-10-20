@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: releasehub-dta-pv
+  labels:
+    app: releasehub
+    environment: dta
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 1Gi
+  accessModes: [ReadWriteMany]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: storage-dta.example.invalid
+    path: /practice/releasehub

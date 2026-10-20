@@ -1,0 +1,55 @@
+[
+  {
+    "name": "workboard",
+    "source_type": "fictional",
+    "source_repo": "registry.example.invalid/workboard",
+    "tag": "1.4.1",
+    "sha": null
+  },
+  {
+    "name": "notebook",
+    "source_type": "fictional",
+    "source_repo": "registry.example.invalid/notebook",
+    "tag": "1.4.1",
+    "sha": null
+  },
+  {
+    "name": "releasehub",
+    "source_type": "fictional",
+    "source_repo": "registry.example.invalid/releasehub",
+    "tag": "2.0.0",
+    "sha": null
+  },
+  {
+    "name": "identity",
+    "source_type": "local",
+    "source_repo": "registry.example.invalid/identity",
+    "tag": "2.0.0-lab",
+    "sha": null,
+    "local_path": "local-sources/DockerFiles/identity",
+    "build_args": {
+      "APP_VERSION": "2.0.0"
+    }
+  },
+  {
+    "name": "scheduler",
+    "source_type": "fictional",
+    "source_repo": "registry.example.invalid/scheduler",
+    "tag": "3.1.0",
+    "sha": null
+  },
+  {
+    "name": "searchbox",
+    "source_type": "fictional",
+    "source_repo": "registry.example.invalid/searchbox",
+    "tag": "2.0.0",
+    "sha": null
+  },
+  {
+    "name": "demo-cache",
+    "source_type": "fictional",
+    "source_repo": "registry.example.invalid/demo-cache",
+    "tag": "0.8.0",
+    "sha": null
+  }
+]

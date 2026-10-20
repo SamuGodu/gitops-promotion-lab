@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: searchbox-stg
+  namespace: argocd
+  labels:
+    environment: stg
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: searchbox-stg
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/service-stack
+      targetRevision: 2.0.0
+      helm:
+        releaseName: searchbox
+        valueFiles:
+          - $value/base/searchbox/values.yaml
+          - $value/clusters/STG/lab/local/searchbox/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/STG/lab/local/searchbox
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

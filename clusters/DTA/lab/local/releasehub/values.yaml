@@ -1,0 +1,8 @@
+# Only DTA differences belong here.
+replicaCount: 1
+database:
+  url: postgres://database-dta.example.invalid:5432/releasehub
+resources:
+  requests:
+    cpu: 25m
+    memory: 32Mi

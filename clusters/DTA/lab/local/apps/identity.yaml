@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: identity-dta
+  namespace: argocd
+  labels:
+    environment: dta
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: identity-dta
+  sources:
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: local-sources/HelmCharts/service-stack
+      helm:
+        releaseName: identity
+        valueFiles:
+          - $value/base/identity/values.yaml
+          - $value/clusters/DTA/lab/local/identity/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/DTA/lab/local/identity
+      ref: value
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

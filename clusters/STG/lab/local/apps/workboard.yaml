@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: workboard-stg
+  namespace: argocd
+  labels:
+    environment: stg
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: workboard-stg
+  sources:
+    - repoURL: registry.example.invalid
+      chart: charts/demo-web
+      targetRevision: 1.0.0
+      helm:
+        releaseName: workboard
+        valueFiles:
+          - $value/base/workboard/values.yaml
+          - $value/clusters/STG/lab/local/workboard/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/STG/lab/local/workboard
+      ref: value
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

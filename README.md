@@ -108,3 +108,20 @@ The experiment is successful when:
 The core lab covers Kustomize, Git branches, two Kubernetes clusters, Argo CD Applications, App of Apps, OutOfSync behavior, `kubectl`, and OpenLens.
 
 The monitoring Helm chart is an optional extension after the core promotion simulation has been completed.
+
+## Offline DTA / STG / PRD practice
+
+Six fictional apps (workboard, notebook, releasehub, identity, scheduler and searchbox)
+provide an offline practice structure alongside
+the existing exercises. Read [the current setup and app/dependency guide](docs/CURRENT-SETUP.md),
+then use [the quick start](docs/OFFLINE-LAB.md) and
+[practice tickets](docs/EXERCISES.md). From this repository root:
+
+```sh
+ruby scripts/lab.rb check
+ruby scripts/lab.rb inventory
+```
+
+These commands use Helm and Kustomize locally. They do not contact a cluster or registry.
+The DTA/STG/PRD addresses and images are fictional. Existing development/production
+exercises and agent guidance remain available.

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "demo-web",
+    "source_repo": "registry.example.invalid",
+    "chart_name": "charts/demo-web",
+    "version": "1.0.0",
+    "offline_package": "offline-cache/demo-web-1.0.0.tgz"
+  },
+  {
+    "name": "service-stack",
+    "source_repo": "registry.example.invalid",
+    "chart_name": "charts/service-stack",
+    "version": "2.0.0",
+    "offline_package": "offline-cache/service-stack-2.0.0.tgz"
+  },
+  {
+    "name": "demo-worker",
+    "source_repo": "registry.example.invalid",
+    "chart_name": "charts/demo-worker",
+    "version": "1.0.0",
+    "offline_package": "offline-cache/demo-worker-1.0.0.tgz"
+  }
+]

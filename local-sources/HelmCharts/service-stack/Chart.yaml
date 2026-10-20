@@ -1,0 +1,12 @@
+apiVersion: v2
+name: service-stack
+description: Fictional service with optional cache dependency and schema migration job
+type: application
+version: 2.0.0
+appVersion: "2.1.0"
+dependencies:
+  - name: demo-cache
+    alias: cache
+    version: 1.0.0
+    repository: file://../demo-cache
+    condition: cache.enabled

@@ -1,0 +1,10 @@
+image:
+  repository: registry.example.invalid/releasehub
+  tag: "2.1.0"
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+cacheRequired: true
+cache:
+  enabled: true

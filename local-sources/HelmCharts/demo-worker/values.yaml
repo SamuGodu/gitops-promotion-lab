@@ -1,0 +1,16 @@
+image:
+  repository: registry.example.invalid/scheduler
+  tag: ""
+schedule: "*/5 * * * *"
+timeZone: Etc/UTC
+concurrencyPolicy: Forbid
+suspend: false
+database:
+  existingSecret: app-db
+resources:
+  requests:
+    cpu: 25m
+    memory: 32Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi

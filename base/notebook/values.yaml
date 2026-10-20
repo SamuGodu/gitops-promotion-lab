@@ -1,0 +1,8 @@
+# Fictional app settings shared by all three environments.
+image:
+  repository: registry.example.invalid/notebook
+  tag: "1.4.2"
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi

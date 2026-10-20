@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: releasehub-dta
+  namespace: argocd
+  labels:
+    environment: dta
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: releasehub-dta
+  sources:
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: local-sources/HelmCharts/service-stack
+      helm:
+        releaseName: releasehub
+        valueFiles:
+          - $value/base/releasehub/values.yaml
+          - $value/clusters/DTA/lab/local/releasehub/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/DTA/lab/local/releasehub
+      ref: value
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

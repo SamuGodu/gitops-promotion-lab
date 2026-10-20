@@ -1,0 +1,6 @@
+apiVersion: v2
+name: demo-worker
+type: application
+version: 1.0.0
+appVersion: "3.2.0"
+description: Fictional scheduled worker

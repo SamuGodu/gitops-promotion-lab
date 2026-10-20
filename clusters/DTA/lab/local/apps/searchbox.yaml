@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: searchbox-dta
+  namespace: argocd
+  labels:
+    environment: dta
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: searchbox-dta
+  sources:
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: local-sources/HelmCharts/service-stack
+      helm:
+        releaseName: searchbox
+        valueFiles:
+          - $value/base/searchbox/values.yaml
+          - $value/clusters/DTA/lab/local/searchbox/values.yaml
+    - repoURL: https://git.example.invalid/practice/ops.git
+      targetRevision: develop
+      path: clusters/DTA/lab/local/searchbox
+      ref: value
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
